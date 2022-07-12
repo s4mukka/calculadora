@@ -55,5 +55,5 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: calculadora-ci-es2
-
+          heroku_app_name: ${{ secrets.HEROKY_APP_NAME }}
+          heroky_email: ${{ secrets.HEROKU_EMAIL }}
