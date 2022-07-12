@@ -1,0 +1,31 @@
+.calculator-wrap {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calculator {
+  padding: 1rem;
+
+  background-color: #4a0baf;
+  border-radius: 10px;
+
+  box-shadow: 4px 4px 0px rgba(23, 0, 60, 0.5);
+}
+
+.calculator-buttons {
+  margin-top: 20px;
+
+  display: grid;
+  grid-template-areas:
+    'none none clear clear'
+    'one two three mul'
+    'four five six sub'
+    'seven eight nine add'
+    'div zero eq add';
+  row-gap: 10px;
+  column-gap: 10px;
+}

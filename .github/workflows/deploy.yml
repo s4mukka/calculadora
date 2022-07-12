@@ -1,0 +1,59 @@
+name: Deploy
+
+on:
+  push:
+  pull_request:
+    branches: [main]
+
+env:
+  REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+      - name: Install modules
+        run: yarn
+      - name: Run ESlint
+        run: yarn lint:fix
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+      - name: Install modules
+        run: yarn
+      - name: Run unit tests and integration tests
+        run: yarn test:ci
+      - name: Run e2e tests
+        run: yarn test:cypress:ci
+
+  deploy:
+    needs: [lint, test]
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+      - name: Install modules
+        run: yarn
+      - name: Build
+        run: yarn build
+      - name: Deploy to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: calculadora-ci-es2
+

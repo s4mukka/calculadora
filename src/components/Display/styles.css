@@ -1,0 +1,17 @@
+.display-wrap {
+  padding: 0.5rem;
+
+  font-size: 4rem;
+  letter-spacing: 0.5rem;
+  color: rgb(220, 220, 220);
+
+  background-color: #261c15;
+
+  border-radius: 10px;
+
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}

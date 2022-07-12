@@ -1,0 +1,40 @@
+.button-wrap {
+  padding: 0.5rem;
+
+  font-size: 4rem;
+  letter-spacing: 0.5rem;
+  color: rgb(220, 220, 220);
+
+  border-radius: 10px;
+
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  user-select: none;
+}
+
+.button-wrap[data-category='number'] {
+  background-color: #dd113d;
+}
+
+.button-wrap[data-category='operator'] {
+  background-color: #008d83;
+}
+
+.button-wrap[data-category='addition'] {
+  background-color: #ced638;
+}
+
+.button-wrap[data-category='clear'] {
+  background-color: #320d6d;
+}
+
+.button-wrap:hover {
+  filter: brightness(0.9);
+
+  transition: hover ease 0.2s;
+}
