@@ -57,7 +57,7 @@ jobs:
         name: code-coverage-report
         path: coverage/lcov.info
     - name: check on report
-      run: cd coverage && ls
+      run: ls coverage
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
       env:
