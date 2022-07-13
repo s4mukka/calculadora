@@ -36,14 +36,28 @@ jobs:
         run: yarn test:ci
       - name: Run e2e tests
         run: yarn test:cypress:ci
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v2
+        with:
+          name: code-coverage-report
+          path: coverage/lcov.info
 
   sonarcloud:
+    needs: [test]
+
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
+    - name: Download code coverage results
+      uses: actions/download-artifact@v2
+      with:
+        name: code-coverage-report
+        path: coverage/lcov.info
+    - name: check on report
+      run: cd coverage && ls
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
       env:
