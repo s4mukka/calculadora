@@ -56,4 +56,4 @@ jobs:
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
         env:
-          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+          HD_REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
