@@ -56,8 +56,9 @@ jobs:
       with:
         name: code-coverage-report
         path: coverage/lcov.info
-    - name: Check
-      run: pwd && ls coverage
+    - name: Fix code coverage paths
+      working-directory: ./coverage
+      run: sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' lcov.info
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
       env:
