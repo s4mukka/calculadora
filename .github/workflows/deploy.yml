@@ -62,7 +62,7 @@ jobs:
           command: monitor
 
   deploy:
-    needs: [lint, test]
+    needs: [lint, test, sonarcloud, snyk]
 
     runs-on: ubuntu-latest
 
